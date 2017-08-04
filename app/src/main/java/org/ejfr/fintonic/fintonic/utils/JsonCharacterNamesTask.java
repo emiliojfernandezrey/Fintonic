@@ -6,13 +6,13 @@ import org.ejfr.fintonic.fintonic.FragmentCharacter;
 import org.ejfr.fintonic.fintonic.model.SuperheroesWrapper;
 import java.util.ArrayList;
 
-/**
+/**Class AsynTask created to manage the http request of characterNames.
  * Created by EmilioJosé on 04/08/2017.
  */
 
 public class JsonCharacterNamesTask extends AsyncTask<Void, Void, ArrayList<String>> {
 
-
+    /**Attribute required to update the names of the adapter/spinner defined in the fragment*/
     private FragmentCharacter fragmentCharacter;
 
     public void setFragmentCharacter(FragmentCharacter fragmentCharacter) {
@@ -25,7 +25,7 @@ public class JsonCharacterNamesTask extends AsyncTask<Void, Void, ArrayList<Stri
         CharacterHttpClient characterHttpClient=new CharacterHttpClient();
         String data = characterHttpClient.getCharactersData();
         try{
-            characterNames = SuperheroesWrapper.fromJSon(data);
+            characterNames = SuperheroesWrapper.getNamesfromJSon(data);
         }catch(Exception e){
             Log.d("Exception",e.toString());
         }

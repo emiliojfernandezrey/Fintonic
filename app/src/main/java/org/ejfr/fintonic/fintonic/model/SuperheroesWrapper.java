@@ -8,13 +8,20 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-/**
+/** Class that manages the data of superheroes json
+ *
  * Created by EmilioJosé on 04/08/2017.
  */
 
 public class SuperheroesWrapper {
 
-    public static MarvelCharacter fromJson(String s, String characterName){
+    /**Method that returns the Marvel Character given by characterName and found in s argument.
+     *
+     * @param s - String which contains the json data
+     * @param characterName - This is the marvel superheroe name to search
+     * @return MarvelCharacter
+     */
+    public static MarvelCharacter getMarvelCharacterfromJson(String s, String characterName){
 
         try {
             JSONObject jsonObject = new JSONObject(s);
@@ -42,7 +49,12 @@ public class SuperheroesWrapper {
         return null;
     }
 
-    public static ArrayList<String> fromJSon(String s){
+    /**Method that returns the superheroe names found in s
+     *
+     * @param s - String which contains the json data
+     * @return ArrayList with the superheroes names
+     */
+    public static ArrayList<String> getNamesfromJSon(String s){
         ArrayList<String> names = new ArrayList<>();
         try {
             JSONObject jsonObject = new JSONObject(s);

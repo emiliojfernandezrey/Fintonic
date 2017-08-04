@@ -11,12 +11,19 @@ import javax.net.ssl.SSLContext;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
 
-/**
+/**Class that manages the https connections.
+ * The connections are https, by default it accepts all connections.
+ *
  * Created by EmilioJosé on 04/08/2017.
  */
 
 public class HttpUtils {
 
+    /**Method that returns the data read by the string_url given as argument
+     *
+     * @param string_url String. This is the URL to establish connection
+     * @return String. This is the data read
+     */
     public static String getDataFromURL(String string_url){
         HttpsURLConnection con = null ;
         InputStream is = null;
@@ -51,6 +58,9 @@ public class HttpUtils {
         return null;
     }
 
+    /**Method that creates an SSL Contexts which trusts in all hosts
+     *
+     */
     private static void trustAllHosts()
     {
         // Create a trust manager that does not validate certificate chains
@@ -83,6 +93,11 @@ public class HttpUtils {
         }
     }
 
+    /**Method that returns byte[] which the image content in the url given as argument
+     *
+     * @param string_url String. This is the url which contains the image
+     * @return byte[]. This is the image read
+     */
     public static byte[] getImageFromUrl(String string_url){
         HttpsURLConnection con = null ;
         InputStream is = null;

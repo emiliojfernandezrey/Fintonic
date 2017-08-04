@@ -31,6 +31,12 @@ public class Utils {
         return charactersList;
     }*/
 
+    /**Method that returns the position of the array which matches with the characterName
+     *
+     * @param names ArrayList
+     * @param characterName String to search
+     * @return int Position where the name was found, by default 0
+     */
     public static int getCharacterNamePosition(ArrayList<String> names, String characterName){
         for(int i=0;i<names.size();i++){
             if(names.get(i).equalsIgnoreCase(characterName)){

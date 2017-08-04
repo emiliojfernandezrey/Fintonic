@@ -12,10 +12,15 @@ import org.ejfr.fintonic.fintonic.utils.Utils;
 
 public class MainActivity extends AppCompatActivity {
 
+    /**Attribute FrameLayout it contains the second fragment in case of landscape*/
     private FrameLayout frameLayout2;
+    /**Attribute which contains the object of the landscape fragment/character*/
     private FragmentCharacter fragmentCharacter2;
-    private static FragmentCharacter fragmentCharacter1;
+    /**Attribute which contains the object of the portrait fragment/character*/
+    private static FragmentCharacter fragmentCharacter1;//defined as static to fix the data in case change portrait to landscape
+    /**Attribute required to manage the fragment*/
     private FragmentTransaction transaction;
+    /**Attribute required to manage the fragment*/
     private FragmentManager fragmentManager;
     private Button exitButton;
 
@@ -38,10 +43,11 @@ public class MainActivity extends AppCompatActivity {
             });
         }
 
+        //Begin transaction to manage the fragments
         fragmentManager=getFragmentManager();
         transaction=fragmentManager.beginTransaction();
 
-        if(fragmentCharacter1==null){
+        if(fragmentCharacter1==null){//Only first time
             fragmentCharacter1 = new FragmentCharacter();
         }
 
@@ -51,9 +57,10 @@ public class MainActivity extends AppCompatActivity {
             fragmentCharacter1.setArguments(bundle);
         }
 
+        //In case of fragment1 I replace the existing one
         transaction.replace(R.id.frame_layout_character1, fragmentCharacter1);
 
-        if(frameLayout2 !=null){//landscape
+        if(frameLayout2 !=null){//landscape, add the fragment2
             fragmentCharacter2 = new FragmentCharacter();
             transaction.add(R.id.frame_layout_character2, fragmentCharacter2);
         }

@@ -22,7 +22,7 @@ import org.ejfr.fintonic.fintonic.utils.Utils;
 
 import java.util.ArrayList;
 
-/**
+/**Class which extends Fragment. Used to show the information of a Marvel Character.
  * Created by EmilioJosé on 03/08/2017.
  */
 
@@ -47,7 +47,7 @@ public class FragmentCharacter extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         myView = inflater.inflate(R.layout.fragment_character, container, false);
 
-        //InitAdapter
+        //InitAdapter asyntask to get the chracter names shown in the spinner
         JsonCharacterNamesTask namesTask = new JsonCharacterNamesTask();
         namesTask.setFragmentCharacter(fragmentCharacter);
         namesTask.execute();
@@ -58,6 +58,9 @@ public class FragmentCharacter extends Fragment {
     }
 
 
+    /**Method that updates the spinner selection given by the bungle characterName saved
+     *
+     */
     private void updateBundle(){
         Bundle bundle = getArguments();
         if(bundle!=null && bundle.getString(Utils.KEY_CHARACTER_NAME)!=null && characterNamesList !=null && characterNamesList.size()>0) {
@@ -79,6 +82,10 @@ public class FragmentCharacter extends Fragment {
         bundle.putString(Utils.KEY_CHARACTER_NAME, characterName);
     }
 
+    /**Method that updates the MarvelCharacter fields shown in the fragment
+     *
+     * @param character MarvelCharacter
+     */
     public void updateValues(MarvelCharacter character){
         this.textViewName = (TextView) this.myView.findViewById(R.id.textViewName);
         this.imageViewPhoto = (ImageView) this.myView.findViewById(R.id.imageViewPhoto);
@@ -98,6 +105,10 @@ public class FragmentCharacter extends Fragment {
         this.textViewGroups.setText(character.getGroups());
     }
 
+    /**Method that sets the adapter with the values given as argument
+     *
+     * @param names ArrayList - Values for the adapter
+     */
     public void setAdapter(final ArrayList<String> names){
         spinner= (Spinner) myView.findViewById(R.id.spinnerFragment);
         characterNamesList =names;
